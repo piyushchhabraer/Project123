@@ -1,5 +1,7 @@
 FROM centos
-RUN yum install httpd -y
+MAINTAINER Piyush
+RUN apt install apache2 -y
+RUN apt-get update -y
 COPY index.html /var/www/html/
 
 CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]

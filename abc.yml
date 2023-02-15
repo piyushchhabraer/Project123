@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    -name: Build docker image out of dockerfile
+     command: docker build -t abc .
+     args:
+       chdir: /Docker/Dockerfile
+      name: image:latest
+      
+    -name: building docker container out of image
+    command: docker run -d --name ansible-docker-container -p 80 abc
